@@ -1,10 +1,20 @@
 package com.example.journalApp.entity;
 
-public class JournalEntry {
 
-    private long id;
+
+import java.util.Date;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "journal_entries")
+public class JournalEntry {
+    @Id
+    private String id;
     private String title;
     private String content;
+    private Date date;
+
 
     public String getContent() {
         return content;
@@ -14,20 +24,27 @@ public class JournalEntry {
         return title;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
+    public Date getDate(){
+        return date;    
+    }
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
 
